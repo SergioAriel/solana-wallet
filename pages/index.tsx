@@ -51,7 +51,10 @@ export default function Home() {
   }, [connection, publicKey]);
 
   const handleTransaction = async () => {
-    if (connection && publicKey) {
+    if (!connection || !publicKey) {
+      console.error("Not connection or PublicKey")
+      return 
+    }
       const transactionWeb3 = new web3.Transaction();
 
 
@@ -79,7 +82,7 @@ export default function Home() {
       finally {
         setTransaction({} as ITransaction)
       }
-    }
+    
   };
 
   return (
@@ -91,7 +94,7 @@ export default function Home() {
         className="relative w-80 h-96 bg-fuchsia-800 rounded-md p-4 items-center flex flex-col gap-8"
       >
         {
-          !connection && !publicKey ?
+          !connection || !publicKey ?
             <WalletMultiButton />
             :
 
