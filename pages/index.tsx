@@ -34,7 +34,7 @@ export default function Home() {
 
   useEffect(() => {
     const getInfo = async () => {
-      console.log(publicKey)
+      console.log(publicKey, connection)
       if (connection && publicKey) {
         // we get the account info for the user's wallet data store and set the balance in our application's state
         const balance = await connection.getBalance(publicKey);
