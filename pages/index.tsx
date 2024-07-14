@@ -91,7 +91,7 @@ export default function Home() {
         className="relative w-80 h-96 bg-fuchsia-800 rounded-md p-4 items-center flex flex-col gap-8"
       >
         {
-          !connection ?
+          !connection && !publicKey ?
             <WalletMultiButton />
             :
 
